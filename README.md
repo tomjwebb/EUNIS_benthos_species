@@ -73,6 +73,7 @@ The product includes three gridded spatial layers covering European seas. The la
 
 The product is available as a geoTiff in the product folder of this project, or as a NetCDF file from ####.
 
+<<<<<<< HEAD
 In addition, the following synthetic tables are available in the data/derived_data folder:
 
 +----------------------+--------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -98,6 +99,7 @@ In addition, the following synthetic tables are available in the data/derived_da
 |                      |                                                              |                                                                                                  |
 |                      |                                                              | EUNIS2019D: EUNIS habitat code + full description                                                |
 +----------------------+--------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+=======
 
 ## More information:
 
