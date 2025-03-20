@@ -100,6 +100,7 @@ In addition, the following synthetic tables are available in the data/derived_da
 |                      |                                                              | EUNIS2019D: EUNIS habitat code + full description                                                |
 +----------------------+--------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
 =======
+=======
 
 ## More information:
 
