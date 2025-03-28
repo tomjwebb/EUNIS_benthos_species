@@ -75,31 +75,10 @@ The product is available as a geoTiff in the product folder of this project, or 
 
 In addition, the following synthetic tables are available in the data/derived_data folder:
 
-+----------------------+--------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-| Table filename       | Table description                                            | Variables included                                                                               |
-+======================+==============================================================+==================================================================================================+
-| eunis_summaries.csv  | Summary of benthic diversity for each EUNIS habitat category | EUNIS2019C: EUNIS habitat code                                                                   |
-|                      |                                                              |                                                                                                  |
-|                      |                                                              | EUNIS2019D: EUNIS habitat code + full description                                                |
-|                      |                                                              |                                                                                                  |
-|                      |                                                              | n_surveys: Number of benthic surveys                                                             |
-|                      |                                                              |                                                                                                  |
-|                      |                                                              | n_species: Number of benthic species                                                             |
-|                      |                                                              |                                                                                                  |
-|                      |                                                              | total_area: total area of each EUNIS code in EUSeaMap                                            |
-|                      |                                                              |                                                                                                  |
-|                      |                                                              | n_cells: total number of \~500m grid cells assigned to each EUNIS category in the rasterised map |
-+----------------------+--------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-| species_by_eunis.csv | Benthic species lists for each EUNIS habitat category        | aphia_id: WoRMS Aphia ID for the accepted species name                                           |
-|                      |                                                              |                                                                                                  |
-|                      |                                                              | scientificname: species name                                                                     |
-|                      |                                                              |                                                                                                  |
-|                      |                                                              | EUNIS2019C: EUNIS habitat code                                                                   |
-|                      |                                                              |                                                                                                  |
-|                      |                                                              | EUNIS2019D: EUNIS habitat code + full description                                                |
-+----------------------+--------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-=======
-=======
+| Table filename | Table description | Variables included |
+|------------------|--------------------|-----------------------------------|
+| eunis_summaries.csv | Summary of benthic diversity for each EUNIS habitat category | EUNIS2019C: EUNIS habitat code EUNIS2019D: EUNIS habitat code + full description n_surveys: Number of benthic surveys n_species: Number of benthic species total_area: total area of each EUNIS code in EUSeaMap n_cells: total number of \~500m grid cells assigned to each EUNIS category in the rasterised map |
+| species_by_eunis.csv | Benthic species lists for each EUNIS habitat category | aphia_id: WoRMS Aphia ID for the accepted species name scientificname: species name EUNIS2019C: EUNIS habitat code EUNIS2019D: EUNIS habitat code + full description |
 
 ## More information:
 
