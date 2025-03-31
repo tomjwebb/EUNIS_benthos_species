@@ -86,7 +86,7 @@ In addition, the following synthetic tables are available in the data/derived_da
 
 ### Code and methodology
 
-All data processing is described in the document Eurobenthos_habitat_species.html within the docs folder. Creation of the final product is described in ####.
+All data processing is described in the document Eurobenthos_habitat_species.html within the docs folder. Creation of the final product is described in ####script/additional file.
 
 ### Citation and download link
 
