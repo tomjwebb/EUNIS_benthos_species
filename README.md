@@ -63,7 +63,7 @@ The derived benthic community and seabed habitat datasets described above were t
 
 ## Data product
 
-The product includes three gridded spatial layers covering European seas. The layers are:
+A summary product includes three gridded spatial layers covering European seas. The layers are:
 
 -   eunis2019 - this is the EUNIS code for the dominant habitat type in each grid cell
 
@@ -77,8 +77,10 @@ In addition, the following synthetic tables are available in the product folder:
 
 | Table filename | Table description | Variables included |
 |------------------|--------------------|-----------------------------------|
-| eunis_summaries.csv | Summary of benthic diversity for each EUNIS habitat category | EUNIS2019C: EUNIS habitat code EUNIS2019D: EUNIS habitat code + full description n_surveys: Number of benthic surveys n_species: Number of benthic species total_area: total area of each EUNIS code in EUSeaMap n_cells: total number of \~500m grid cells assigned to each EUNIS category in the rasterised map |
-| species_by_eunis.csv | Benthic species lists for each EUNIS habitat category | aphia_id: WoRMS Aphia ID for the accepted species name scientificname: species name EUNIS2019C: EUNIS habitat code EUNIS2019D: EUNIS habitat code + full description |
+| eunis_summaries.csv | Summary of benthic diversity for each EUNIS habitat category | *EUNIS2019C:* EUNIS habitat code, *EUNIS2019D:* EUNIS habitat code + full description, *n_surveys:* Number of benthic surveys, *n_species:* Number of benthic species, *total_area:* total area of each EUNIS code in EUSeaMap, *n_cells:* total number of \~500m grid cells assigned to each EUNIS category in the rasterised map |
+| species_by_eunis.csv | Benthic species lists for each EUNIS habitat category | *aphia_id:* WoRMS Aphia ID for the accepted species name, *scientificname:* species name, *EUNIS2019C:* EUNIS habitat code, *EUNIS2019D:* EUNIS habitat code + full description |
+
+These summary tables are derived from the benthos_full_matched dataset. Example code for producing these tables, as well as other data structures that may be of interest, is included in the *Code and methodology* section below.
 
 ## More information:
 
@@ -87,6 +89,50 @@ In addition, the following synthetic tables are available in the product folder:
 ### Code and methodology
 
 All data processing is described in the document Eurobenthos_habitat_species.html within the docs folder. Creation of the final product is described in ####script/additional file.
+
+To create the summary data tables in R from the 'benthos_full_matched.parquet' file requires the `tidyverse` and `arrow` packages:
+
+```
+library(tidyverse)
+library(arrow)
+```
+Then the full dataset can be read in directly from this repo:
+
+```
+benthos_full_matched <- read_parquet("https://github.com/tomjwebb/EUNIS_benthos_species/raw/refs/heads/master/data/derived_data/benthos_full_matched.parquet")
+```
+From this it is straightforward to derive the list of unique species per EUNIS habitat:
+
+```
+species_by_eunis <- benthos_full_matched %>%
+  select(aphia_id, scientificname, EUNIS2019C, EUNIS2019D) %>% 
+  distinct() %>% 
+  arrange(EUNIS2019C)
+```
+This is the dataset provided in the product folder as species_by_eunis.csv. From this dataset you can easily get a list of species for a particular EUNIS code of interest, for instance for MB12 (Atlantic infralittoral rock):
+
+```
+MB12_species <- species_by_eunis %>% 
+  filter(EUNIS2019C == "MB12")
+```
+
+Or to get all the habitats in which a species of interest - e.g. _Mytilus edulis_ - has been recorded:
+
+```
+m_edulis_habs <- species_by_eunis %>% 
+  filter(scientificname == "Mytilus edulis")
+```
+
+NB - because the version of the habitat map used here is at a coarser resolution than the full EUSeaMap, and also the precision of the benthos survey data locations is variable, these outputs should be considered as a broad scale guide rather than as a definitive measure of habitat affinities of benthic species. For individual species of interest it may be more informative to get the frequency of occurrence across different habitat types from the main dataset, for instance for _M. edulis_:
+
+```
+m_edulis_habs_freq <- benthos_full_matched %>% 
+  filter(scientificname == "Mytilus edulis") %>% 
+  group_by(EUNIS2019C) %>% 
+  summarise(freq_by_hab = n(), .groups = "drop")
+```
+
+
 
 ### Citation and download link
 
