@@ -128,6 +128,7 @@ NB - because the version of the habitat map used here is at a coarser resolution
 ```
 m_edulis_habs_freq <- benthos_full_matched %>% 
   filter(scientificname == "Mytilus edulis") %>% 
+<<<<<<< HEAD
   group_by(EUNIS2019C, EUNIS2019D) %>% 
   summarise(freq_by_hab = n(),
             .groups = "drop")
@@ -167,7 +168,6 @@ species_by_eunis_mat <- species_by_eunis %>%
   pivot_wider(names_from = eunis_full, values_from = p_present) %>% 
   mutate(across(everything(), ~replace_na(.x, 0)))
 ```
-
 
 ### Citation and download link
 
