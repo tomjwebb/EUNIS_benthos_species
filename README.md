@@ -73,7 +73,7 @@ The product includes three gridded spatial layers covering European seas. The la
 
 The product is available as a geoTiff in the product folder of this project, or as a NetCDF file from ####.
 
-In addition, the following synthetic tables are available in the data/derived_data folder:
+In addition, the following synthetic tables are available in the product folder:
 
 | Table filename | Table description | Variables included |
 |------------------|--------------------|-----------------------------------|
